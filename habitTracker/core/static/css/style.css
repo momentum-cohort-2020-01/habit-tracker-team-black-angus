@@ -23,5 +23,18 @@ body {
     color: #ffffff;
     text-decoration: none;
 }
-.login-links {
+ s
+.habit {
+    display: inline-flex;
+    background-color: aquamarine;
+    width: 35%;
+    margin: 2rem;
+    padding: 1rem;
+    border: 5px solid;
+    border-radius: 5px;
+    border-color: black;
+}
+
+.habit-name {
+    text-emphasis: bold;
 }
