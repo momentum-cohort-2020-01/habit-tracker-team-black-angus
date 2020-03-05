@@ -9,6 +9,9 @@ body {
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.85);
     padding: 3rem;
@@ -16,6 +19,11 @@ body {
 
 }
 
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+}
+ s
 .habit {
     display: inline-flex;
     background-color: aquamarine;
