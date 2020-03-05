@@ -2,5 +2,14 @@
 
 
 {% block content %}
-<h2>This is where habits go</h2>
+<h2>TRAGGED HABITS</h2>
+{% for habit in habits %}
+<div class="habit" id="{{habit.pk}}">
+    <p class="habit-name">{{habit.name}}</p>
+    <p class="habit-action">I want to {{habit.action}}</p>
+    <p class="habit-goal">My Goal: {{habit.goal}}</p>
+
+</div>
+{% endfor %}
+
 {% endblock content %}

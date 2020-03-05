@@ -9,9 +9,32 @@ body {
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.85);
     padding: 3rem;
     width: 100%;
 
+}
+
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.habit {
+    display: inline-flex;
+    background-color: aquamarine;
+    width: 35%;
+    margin: 2rem;
+    padding: 1rem;
+    border: 5px solid;
+    border-radius: 5px;
+    border-color: black;
+}
+
+.habit-name {
+    text-emphasis: bold;
 }

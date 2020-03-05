@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.contrib.auth.models import User
+from .models import Habit, Log
+
 
 # Create your views here.
 def launch_home(request):
@@ -23,4 +25,6 @@ def register_user(request):
     return(request, 'core/register.html', {'form': form})
 
 def user_profile(request):
-    return render(request, 'core/user.html')
+    habits = Habit.objects.all()
+    return render(request, 'core/habits.html', {'habits': habits})
+
