@@ -131,3 +131,6 @@ INTERNAL_IPS = [
     # ...
 ]
 
+ACCOUNT_ACTIVATION_DAYS = 700
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
