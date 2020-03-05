@@ -9,9 +9,19 @@ body {
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.85);
     padding: 3rem;
     width: 100%;
 
+}
+
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+}
+.login-links {
 }
