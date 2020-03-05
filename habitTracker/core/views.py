@@ -9,4 +9,4 @@ def launch_home(request):
 
 def habit_list(request):
     habits = Habit.objects.all()
-    return render(request, 'core/habits.html', {'habits': habit})
+    return render(request, 'core/habits.html', {'habits': habits})

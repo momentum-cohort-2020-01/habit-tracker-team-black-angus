@@ -3,7 +3,7 @@
 
 {% block content %}
 <h2>TRAGGED HABITS</h2>
-{% for book in books %}
+{% for habit in habits %}
 <div class="habit" id="{{habit.pk}}">
     <p class="habit-name">{{habit.name}}</p>
     <p class="habit-action">I want to {{habit.action}}</p>
