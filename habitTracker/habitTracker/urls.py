@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls'), name='login'),
+    path('', views.launch_home, name='launch-home'),
+    path('habits/', views.habit_list, name='habit-list'),
 ]
 
 if settings.DEBUG:
