@@ -26,5 +26,8 @@ def register_user(request):
 
 def user_profile(request):
     habits = Habit.objects.all()
+    logs = Log.objects.all()
+    print(habits)
+    print(logs)
     return render(request, 'core/habits.html', {'habits': habits})
 
