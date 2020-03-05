@@ -24,6 +24,8 @@ urlpatterns = [
     path('accounts/', include('registration.backends.default.urls'), name='login'),
     path('', views.launch_home, name='launch-home'),
     path('habits/', views.habit_list, name='habit-list'),
+    path('accounts/register/', views.register_user, name='register-user'),
+    path('accounts/profile/', views.user_profile, name='user-profile')
 ]
 
 if settings.DEBUG:
