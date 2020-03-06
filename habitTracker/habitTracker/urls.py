@@ -26,7 +26,9 @@ urlpatterns = [
     path('', views.launch_home, name='launch-home'),
     path('habits/', views.habit_list, name='habit-list'),
     path('accounts/register/', views.register_user, name='register-user'),
-    path('accounts/profile/', views.user_profile, name='user-profile')
+    path('accounts/profile/', views.user_profile, name='user-profile'),
+    #need to get habit_pk
+    path('log/<int:habit_pk>', views.post_log, name='post-log')
 ]
 
 if settings.DEBUG:

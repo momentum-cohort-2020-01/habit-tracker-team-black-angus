@@ -5,12 +5,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta.25/shoelace.css">
   <link rel="stylesheet" type='text/css' href="{% static 'css/style.css' %}">
   <title class=>Habit Tracker</title>
 </head>
 <body>
     <header class='header'>
-        <h1 class='site-title'>Habbitrapper</h1>
+        <h1 class='site-title'>
+            <a href="{% url 'launch-home' %}">HABBIT</br>RABBIT</a>
+        </h1>
         <div class='login-links'>
             {% if user.is_authenticated %}
                 <a class='logout' href="/accounts/logout">Logout</a>

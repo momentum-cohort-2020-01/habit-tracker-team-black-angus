@@ -8,13 +8,18 @@ body {
     color: rgba(0, 0, 0, 0.85);
 }
 
+form {
+    width: 80%;
+    margin: 2rem;
+    
+}
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.85);
-    padding: 3rem;
+    padding: 2rem;
     width: 100%;
 
 }
@@ -22,6 +27,16 @@ body {
 .header a {
     color: #ffffff;
     text-decoration: none;
+}
+
+.header a:hover {
+    color: aquamarine;
+}
+
+.site-title {
+    font-family: 'Faster One', cursive;
+    font-size: 5rem;
+    margin-left: 2rem;
 }
 
 .habit {
