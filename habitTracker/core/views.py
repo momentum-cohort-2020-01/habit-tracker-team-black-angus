@@ -27,7 +27,12 @@ def register_user(request):
 
 def user_profile(request):
     habits = Habit.objects.filter(user=request.user)
-    return render(request, 'core/habits.html', {'habits': habits})
+    if request.method == "POST":
+        form = LogForm(request.POST)
+        new_log = form.save(commit=False)
+    form = LogForm()
+    breakpoint()
+    return render(request, 'core/habits.html', {'habits': habits, 'form': form})
 
 def post_log(request, habit_pk):
     habit = get_object_or_404(Habit, pk=habit_pk)
