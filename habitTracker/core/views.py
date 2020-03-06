@@ -26,7 +26,7 @@ def register_user(request):
     return(request, 'core/register.html', {'form': form})
 
 def user_profile(request):
-    habits = Habit.objects.all()
+    habits = Habit.objects.filter(user=request.user)
     return render(request, 'core/habits.html', {'habits': habits})
 
 def post_log(request, habit_pk):
