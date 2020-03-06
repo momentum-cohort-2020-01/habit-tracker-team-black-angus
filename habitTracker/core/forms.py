@@ -6,4 +6,5 @@ class LogForm(forms.ModelForm):
 
     class Meta: 
         model = Log
-        fields = ('value_entry',)
+        fields = ('value_entry', 'habit')
+        widgets = {"habit": forms.HiddenInput()}

@@ -8,7 +8,10 @@
     <p class="habit-name">{{habit.name}}</p>
     <p class="habit-action">I want to {{habit.action}}</p>
     <p class="habit-goal">My Goal: {{habit.goal}}</p>
-    
+    <form action="POST">
+        {{ form.as_p}}
+        <input type="submit" value="yup">
+    </form>
 
 </div>
 {% endfor %}
