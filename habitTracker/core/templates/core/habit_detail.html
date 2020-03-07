@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class='habit-detail-name'>{{habit.name}}</h2>
+<h3 class='habit-detail-goal'>My goal is: {{habit.goal}}</h3>
+<div>
+  <form action="" method='POST'>
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <!-- <input type='hidden' value="{{ habit.pk }}" name="habit"> -->
+    <input type='submit' class="button" value='submit'>
+  </form>
+</div>
+{% endblock content %}
