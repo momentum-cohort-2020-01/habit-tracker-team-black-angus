@@ -6,7 +6,7 @@
   <h2 class='habit-detail-name'><strong>{{habit.name}}</strong></h2>
   <h2 class='habit-detail-action'>I want to {{habit.action}}</h2>
   <h3 class='habit-detail-goal'>My goal is: {{habit.goal}}</h3>
-  <h3>Current: {{ log.value }}</h3>
+  <h3>Current: {{ log }}</h3>
   <div class='habit-detail-form'>
     <form  action="" method='POST'>
       {% csrf_token %}

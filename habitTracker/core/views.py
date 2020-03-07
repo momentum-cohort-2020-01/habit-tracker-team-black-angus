@@ -16,17 +16,14 @@ def habit_list(request):
 
 def habit_detail(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
-    log = Log(habit=habit)
+    log = Log.objects.filter(habit_id=pk).latest('created_at').value_entry
     if request.method == "POST":
         form = LogForm(request.POST, instance=log)
-        
-        # habit_pk = request.POST.get('habit')
-        # habit = Habit.objects.get(pk=habit_pk)
         if form.is_valid():
             log = form.save()
             return redirect('habit-detail', pk=pk)
     else:
-        form = LogForm(instance=log)
+        form = LogForm()
 
     return render(request, 'core/habit_detail.html', {'habit':habit, 'form':form, 'log':log, 'pk':pk })
     
