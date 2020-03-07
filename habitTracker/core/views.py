@@ -31,7 +31,6 @@ def user_profile(request):
         form = LogForm(request.POST)
         new_log = form.save(commit=False)
     form = LogForm()
-    breakpoint()
     return render(request, 'core/habits.html', {'habits': habits, 'form': form})
 
 def post_log(request, habit_pk):
