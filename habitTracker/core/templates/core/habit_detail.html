@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<a class='back-to-profile' href="{% url 'user-profile'%}">Back</a>
 <div class='habit-detail-card'>
-<h2 class='habit-detail-name'><strong>{{habit.name}}</strong></h2>
-<h2 class='habit-detail-action'>I want to {{habit.action}}</h2>
-<h3 class='habit-detail-goal'>My goal is: {{habit.goal}}</h3>
-<div class='habit-detail-form'>
-  <form  action="" method='POST'>
-    {% csrf_token %}
-    <table>
-    {{ form }}
-    </table>
-    <!-- <input type='hidden' value="{{ habit.pk }}" name="habit"> -->
-    <input type='submit' class="button" value='submit'>
-  </form>
-</div>
+  <h2 class='habit-detail-name'><strong>{{habit.name}}</strong></h2>
+  <h2 class='habit-detail-action'>I want to {{habit.action}}</h2>
+  <h3 class='habit-detail-goal'>My goal is: {{habit.goal}}</h3>
+  <h3>Current: {{ log.value }}</h3>
+  <div class='habit-detail-form'>
+    <form  action="" method='POST'>
+      {% csrf_token %}
+      <table>
+      {{ form }}
+      </table>
+      <!-- <input type='hidden' value="{{ habit.pk }}" name="habit"> -->
+      <input type='submit' class="button" value='submit'>
+    </form>
+  </div>
 </div>
 {% endblock content %}

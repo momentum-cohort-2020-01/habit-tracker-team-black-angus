@@ -24,16 +24,11 @@ def habit_detail(request, pk):
         # habit = Habit.objects.get(pk=habit_pk)
         if form.is_valid():
             log = form.save()
-            return redirect('habit-list')
+            return redirect('habit-detail', pk=pk)
     else:
         form = LogForm(instance=log)
-    
-    #     value_entry = request.POST.get('value_entry')
-    #     log = Log.objects.create(habit=habit, value_entry=value_entry)
-        
-    # form = LogForm()
-    # return render(request, 'core/habit_detail.html', {'habit':habit, "pk":pk})
-    return render(request, 'core/habit_detail.html', {'habit':habit, 'form':form })
+
+    return render(request, 'core/habit_detail.html', {'habit':habit, 'form':form, 'log':log, 'pk':pk })
     
 
 def register_user(request):

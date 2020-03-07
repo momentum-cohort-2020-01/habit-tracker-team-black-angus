@@ -8,6 +8,7 @@
     <p class="habit-name"><a href="{% url 'habit-detail' habit.pk %}">{{habit.name}}</a></p>
     <p class="habit-action">I want to {{habit.action}}</p>
     <p class="habit-goal">My Goal: {{habit.goal}}</p>
+    <p class="habit-current">Current: {{log}}</p>
     <div>
         <!-- <form method='POST'>{% csrf_token %}
             {{ form.as_p }}
