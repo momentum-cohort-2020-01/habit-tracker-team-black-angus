@@ -15,7 +15,7 @@ class Log(models.Model):
     habit = models.ForeignKey(to=Habit, related_name='habits', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    value_entry = models.CharField(max_length=100)
+    value_entry = models.IntegerField()
 
     def __str__(self):
         return f'{self.habit} {self.value_entry}'
