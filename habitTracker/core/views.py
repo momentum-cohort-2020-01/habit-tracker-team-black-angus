@@ -15,14 +15,15 @@ def habit_list(request):
     return render(request, 'core/habits.html')
 
 def habit_detail(request, pk):
-    habit = Habit.objects.get(pk=pk)
+    habit = get_object_or_404(Habit, pk=pk)
     if request.method == "POST":
         form = LogForm(request.POST)
+        
         # habit_pk = request.POST.get('habit')
         # habit = Habit.objects.get(pk=habit_pk)
         if form.is_valid():
-            form.save()
-        return redirect('habit-list')
+            value_entry = form.save()
+            return redirect('habit-list', pk = habit.pk)
     else:
         form = LogForm()
     
@@ -32,6 +33,7 @@ def habit_detail(request, pk):
     # form = LogForm()
     # return render(request, 'core/habit_detail.html', {'habit':habit, "pk":pk})
     return render(request, 'core/habit_detail.html', {'habit':habit, 'form':form })
+    
 
 def register_user(request):
 
