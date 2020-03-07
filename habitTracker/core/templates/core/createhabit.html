@@ -1,3 +1,9 @@
-{% entends 'base.html' %}
-
+{% extends 'base.html' %}
+{% block content %}
 <h2>make a new habit</h2>
+<form class="new-habit" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" class="button" value="NEW HABBO">
+</form>
+{% endblock %}

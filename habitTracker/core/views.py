@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.conf import settings
 from django.contrib.auth.models import User
 from .models import Habit, Log
-from .forms import LogForm
+from .forms import LogForm, HabitForm
 
 
 # Create your views here.
@@ -62,4 +62,19 @@ def user_profile(request):
 def post_log(request, habit_pk):
     habit = get_object_or_404(Habit, pk=habit_pk)
     form = LogForm()
+
+def create_habit(request):
+    usertemp = request.user
+    if request.method == "POST":
+        form = HabitForm(request.POST)
+        name = request.POST.get('name')
+        action = request.POST.get('action')
+        goal = request.POST.get('goal')
+        user = request.POST.get('user')
+        if form.is_valid():
+            form.save()
+            return redirect('user-profile')
+    else:    
+        form = HabitForm()
+    return render(request, 'core/createhabit.html', {'form': form})
 
