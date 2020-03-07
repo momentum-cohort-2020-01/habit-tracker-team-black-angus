@@ -16,16 +16,17 @@ def habit_list(request):
 
 def habit_detail(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
+    log = Log(habit=habit)
     if request.method == "POST":
-        form = LogForm(request.POST)
+        form = LogForm(request.POST, instance=log)
         
         # habit_pk = request.POST.get('habit')
         # habit = Habit.objects.get(pk=habit_pk)
         if form.is_valid():
-            value_entry = form.save()
-            return redirect('habit-list', pk = habit.pk)
+            log = form.save()
+            return redirect('habit-list')
     else:
-        form = LogForm()
+        form = LogForm(instance=log)
     
     #     value_entry = request.POST.get('value_entry')
     #     log = Log.objects.create(habit=habit, value_entry=value_entry)
