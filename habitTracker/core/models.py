@@ -18,7 +18,7 @@ class Log(models.Model):
     value_entry = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'{self.user}'
+        return f'{self.habit} {self.value_entry}'
 
 
 

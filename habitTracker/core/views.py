@@ -14,6 +14,28 @@ def launch_home(request):
 def habit_list(request):
     return render(request, 'core/habits.html')
 
+def habit_detail(request, pk):
+    habit = get_object_or_404(Habit, pk=pk)
+    log = Log(habit=habit)
+    if request.method == "POST":
+        form = LogForm(request.POST, instance=log)
+        
+        # habit_pk = request.POST.get('habit')
+        # habit = Habit.objects.get(pk=habit_pk)
+        if form.is_valid():
+            log = form.save()
+            return redirect('habit-list')
+    else:
+        form = LogForm(instance=log)
+    
+    #     value_entry = request.POST.get('value_entry')
+    #     log = Log.objects.create(habit=habit, value_entry=value_entry)
+        
+    # form = LogForm()
+    # return render(request, 'core/habit_detail.html', {'habit':habit, "pk":pk})
+    return render(request, 'core/habit_detail.html', {'habit':habit, 'form':form })
+    
+
 def register_user(request):
 
     if request.method == 'POST':
@@ -27,7 +49,16 @@ def register_user(request):
 
 def user_profile(request):
     habits = Habit.objects.filter(user=request.user)
-    return render(request, 'core/habits.html', {'habits': habits})
+    if request.method == "POST":
+        form = LogForm(request.POST)
+        habit_pk = request.POST.get('habit')
+        habit = Habit.objects.get(pk=habit_pk)
+        value_entry = request.POST.get('value_entry')
+        log = Log.objects.create(habit=habit, value_entry=value_entry)
+        
+    form = LogForm()
+
+    return render(request, 'core/habits.html', {'habits': habits, 'form': form})
 
 def post_log(request, habit_pk):
     habit = get_object_or_404(Habit, pk=habit_pk)

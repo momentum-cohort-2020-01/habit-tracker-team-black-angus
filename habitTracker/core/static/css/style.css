@@ -53,3 +53,12 @@ form {
 .habit-name {
     text-emphasis: bold;
 }
+
+.habit-detail-card {
+    margin: 1rem;
+    background-color: aquamarine;
+    border: 5px solid black;
+    border-radius: 5px;
+}
+
+.

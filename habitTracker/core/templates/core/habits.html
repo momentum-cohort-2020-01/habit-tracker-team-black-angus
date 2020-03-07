@@ -5,10 +5,17 @@
 <h2>TRAGGED HABITS</h2>
 {% for habit in habits %}
 <div class="habit" id="{{habit.pk}}">
-    <p class="habit-name">{{habit.name}}</p>
+    <p class="habit-name"><a href="{% url 'habit-detail' habit.pk %}">{{habit.name}}</a></p>
     <p class="habit-action">I want to {{habit.action}}</p>
     <p class="habit-goal">My Goal: {{habit.goal}}</p>
-    
+    <div>
+        <!-- <form method='POST'>{% csrf_token %}
+            {{ form.as_p }}
+            <input type='hidden' value="{{ habit.pk }}" name="habit">
+            <input type='submit' value='yop'>
+        </form> -->
+
+    </div>
 
 </div>
 {% endfor %}
