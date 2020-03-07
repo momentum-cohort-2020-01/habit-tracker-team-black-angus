@@ -11,6 +11,13 @@ class LogForm(forms.ModelForm):
         fields = ('value_entry', )
 
 
+class HabitForm(forms.ModelForm):
+
+    class Meta: 
+        model = Habit
+        fields = ('name', 'action', 'goal', 'user')
+
+
 
 
 
