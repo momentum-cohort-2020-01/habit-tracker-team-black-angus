@@ -20,10 +20,6 @@ def habit_detail(request, pk):
         current_log = Log.objects.filter(habit_id=pk).latest('created_at').value_entry
     except Log.DoesNotExist:
         current_log = 0
-    return render(request, 'core/habit_detail.html', {'habit':habit, 'pk': pk, 'current_log':current_log})
-
-def log_habit(request, pk):
-    habit = get_object_or_404(Habit, pk=pk)
     if request.method == "POST":
         form = LogForm(request.POST)
         if form.is_valid():
@@ -33,8 +29,21 @@ def log_habit(request, pk):
             return redirect('habit-detail', pk=pk)
     else:
         form = LogForm()
+    return render(request, 'core/habit_detail.html', {'habit':habit, 'pk': pk, 'current_log':current_log, 'form':form },)
 
-    return render(request, 'core/log_habit.html', {'form':form})
+# def log_habit(request, pk):
+#     habit = get_object_or_404(Habit, pk=pk)
+#     if request.method == "POST":
+#         form = LogForm(request.POST)
+#         if form.is_valid():
+#             log = form.save(commit=False)
+#             log.habit = habit
+#             form.save()
+#             return redirect('habit-detail', pk=pk)
+#     else:
+#         form = LogForm()
+
+#     return render(request, 'core/log_habit.html', {'form':form})
 
 
 # def habit_detail(request, pk):
