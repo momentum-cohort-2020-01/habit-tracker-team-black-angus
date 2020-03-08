@@ -9,7 +9,10 @@ from .forms import LogForm, HabitForm
 
 # Create your views here.
 def launch_home(request):
-    return render(request, 'core/home.html')
+    if request.user.is_authenticated:
+        return user_profile(request)
+    else:
+        return render(request, 'core/home.html')
 
 def habit_list(request):
     return render(request, 'core/habits.html')
