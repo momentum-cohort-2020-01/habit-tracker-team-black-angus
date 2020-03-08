@@ -12,10 +12,10 @@ class Habit(models.Model):
         return f'{self.name}'
         
 class Log(models.Model):
-    habit = models.ForeignKey(to=Habit, related_name='habits', on_delete=models.CASCADE)
+    habit = models.ForeignKey(to=Habit, related_name='habits', on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    value_entry = models.IntegerField()
+    value_entry = models.PositiveIntegerField(default=0)
 
     def __str__(self):
-        return f'{self.habit} {self.value_entry}'
+        return f'{self.habit}: {self.value_entry}'
