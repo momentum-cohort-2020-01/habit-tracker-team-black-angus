@@ -26,9 +26,9 @@ urlpatterns = [
     path('', views.launch_home, name='launch-home'),
     path('habits/', views.habit_list, name='habit-list'),
     path('habits/<int:pk>', views.habit_detail, name='habit-detail'),
+    # path('habits/<int:pk>/loghabit', views.log_habit, name='log-habit'),
     path('accounts/register/', views.register_user, name='register-user'),
     path('accounts/profile/', views.user_profile, name='user-profile'),
-    #need to get habit_pk
     path('log/<int:habit_pk>', views.post_log, name='post-log'),
     path('accounts/createhabit/', views.create_habit, name='create-habit'),
 ]

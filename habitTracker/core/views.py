@@ -19,24 +19,49 @@ def habit_list(request):
 
 def habit_detail(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
-    log = Log(habit=habit)
+    try:
+        current_log = Log.objects.filter(habit_id=pk).latest('created_at').value_entry
+    except Log.DoesNotExist:
+        current_log = 0
     if request.method == "POST":
-        form = LogForm(request.POST, instance=log)
-        
-        # habit_pk = request.POST.get('habit')
-        # habit = Habit.objects.get(pk=habit_pk)
+        form = LogForm(request.POST)
         if form.is_valid():
-            log = form.save()
-            return redirect('habit-list')
+            log = form.save(commit=False)
+            log.habit = habit
+            form.save()
+            return redirect('habit-detail', pk=pk)
     else:
-        form = LogForm(instance=log)
-    
-    #     value_entry = request.POST.get('value_entry')
-    #     log = Log.objects.create(habit=habit, value_entry=value_entry)
-        
-    # form = LogForm()
-    # return render(request, 'core/habit_detail.html', {'habit':habit, "pk":pk})
-    return render(request, 'core/habit_detail.html', {'habit':habit, 'form':form })
+        form = LogForm()
+    return render(request, 'core/habit_detail.html', {'habit':habit, 'pk': pk, 'current_log':current_log, 'form':form },)
+
+# def log_habit(request, pk):
+#     habit = get_object_or_404(Habit, pk=pk)
+#     if request.method == "POST":
+#         form = LogForm(request.POST)
+#         if form.is_valid():
+#             log = form.save(commit=False)
+#             log.habit = habit
+#             form.save()
+#             return redirect('habit-detail', pk=pk)
+#     else:
+#         form = LogForm()
+
+#     return render(request, 'core/log_habit.html', {'form':form})
+
+
+# def habit_detail(request, pk):
+#     habit = get_object_or_404(Habit, pk=pk)
+#     log = Log.objects.filter(habit_id=pk).latest('created_at').value_entry
+#     if request.method == "POST":
+#         form = LogForm(request.POST, instance=log)
+
+#         if form.is_valid():
+#             log = form.save()
+#             return redirect('habit-detail', pk=pk)
+#     else:
+#         form = LogForm()
+
+#     return render(request, 'core/habit_detail.html', {'habit':habit, 'form':form, 'log':log, 'pk':pk })
     
 
 def register_user(request):
