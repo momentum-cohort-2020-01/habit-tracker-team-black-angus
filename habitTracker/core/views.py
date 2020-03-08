@@ -76,7 +76,14 @@ def register_user(request):
     return(request, 'core/register.html', {'form': form})
 
 def user_profile(request):
+    tempLogs = {}
+    tempLog = 0
     habits = Habit.objects.filter(user=request.user)
+    for habit in habits:
+        tempLog = Log.objects.filter(habit.pk).latest('created_at').value_entry
+        key = habit.pk
+        tempLogs.update({f'{key}: {tempLog}'})
+    logs = Log.objects.filter(user)
     if request.method == "POST":
         form = LogForm(request.POST)
         habit_pk = request.POST.get('habit')
@@ -85,7 +92,7 @@ def user_profile(request):
         log = Log.objects.create(habit=habit, value_entry=value_entry)
         
     form = LogForm()
-    return render(request, 'core/habits.html', {'habits': habits, 'form': form})
+    return render(request, 'core/habits.html', {'habits': habits, 'form': form, 'tempLogs': tempLogs})
 
 def post_log(request, habit_pk):
     habit = get_object_or_404(Habit, pk=habit_pk)
