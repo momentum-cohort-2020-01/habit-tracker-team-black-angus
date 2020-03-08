@@ -15,8 +15,11 @@ def habit_list(request):
     return render(request, 'core/habits.html')
 
 def habit_detail(request, pk):
-    current_log = Log.objects.filter(habit_id=pk).latest('created_at').value_entry
     habit = get_object_or_404(Habit, pk=pk)
+    try:
+        current_log = Log.objects.filter(habit_id=pk).latest('created_at').value_entry
+    except Log.DoesNotExist:
+        current_log = 0
     return render(request, 'core/habit_detail.html', {'habit':habit, 'pk': pk, 'current_log':current_log})
 
 def log_habit(request, pk):
