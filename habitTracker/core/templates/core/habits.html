@@ -10,15 +10,12 @@
             <p class="habit-name"><strong>{{habit.name}}</strong></p>
             <p class="habit-action">I want to {{habit.action}}</p>
             <p class="habit-goal">My Goal: {{habit.goal}}</p>
-            <p class="habit-current">Current: {{ current_log }}</p>
-            <div>
-                <!-- <form method='POST'>{% csrf_token %}
-                    {{ form.as_p }}
-                    <input type='hidden' value="{{ habit.pk }}" name="habit">
-                    <input type='submit' value='yop'>
-                </form> -->
-
-            </div>
+            <p class="habit-current">Current: {{ habit.current_log }}</p>
+            {% if habit.goal_met %}
+                <p>did it!!</p>
+            {% else %}
+                <p>you'll never make it</p>
+            {% endif %}
 
         </div>
     </a>

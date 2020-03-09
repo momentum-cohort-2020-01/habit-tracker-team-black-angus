@@ -65,7 +65,7 @@ form {
     padding: 1rem;
     border: 5px solid;
     border-radius: 5px;
-    border-color: black;
+    border-color: rgba(0, 0, 0, 0.85);
 }
 
 .habit:hover {
@@ -78,20 +78,20 @@ form {
     text-emphasis: bold;
     color: white;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;    
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.85);    
 }
 
 .habit-name a {
     text-emphasis: bold;
     color: white;
     -webkit-text-stroke-width: .75px;
-    -webkit-text-stroke-color: black;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.85);
 }
 
 .habit-detail-card {
     margin: 1rem;
     background-color: aquamarine;
-    border: 5px solid black;
+    border: 5px solid rgba(0, 0, 0, 0.85);
     border-radius: 5px;
     width: 70%;
 }
@@ -100,5 +100,5 @@ form {
     font-size: 3rem;
     color: white;
     -webkit-text-stroke-width: .75px;
-    -webkit-text-stroke-color: black;  
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.85);  
 }

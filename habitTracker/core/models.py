@@ -10,6 +10,20 @@ class Habit(models.Model):
     user = models.ForeignKey(to=User, related_name='logs', on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.name}'
+    
+    @property
+    def current_log(self):
+        try:
+            current_log = Log.objects.filter(habit_id=self.pk).latest('created_at').value_entry
+        except Log.DoesNotExist:
+            current_log = 0
+        return current_log
+    
+    @property
+    def goal_met(self):
+        goal_met = self.current_log >= int(self.goal)
+        return goal_met
+
         
 class Log(models.Model):
     habit = models.ForeignKey(to=Habit, related_name='habits', on_delete=models.CASCADE, null=True, blank=True)
