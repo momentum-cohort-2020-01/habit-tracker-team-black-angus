@@ -6,10 +6,11 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(0, 0, 0, 0.85);
+    margin: 0;
 }
 
 form {
-    width: 80%;
+    width: 90%;
     margin: 2rem;
     
 }
@@ -34,15 +35,32 @@ form {
 }
 
 .site-title {
-    font-family: 'Faster One', cursive;
+    font-family: 'Faster One', Arial;
     font-size: 5rem;
     margin-left: 2rem;
 }
 
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.container a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.85);
+    
+}
+
+.container a:hover {
+    background-image: url("https://images.squarespace-cdn.com/content/v1/596384c96b8f5b5620c700e8/1504883858222-B95IGUP35VEBP8K3JOGW/ke17ZwdGBToddI8pDm48kNiEM88mrzHRsd1mQ3bxVct7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0s0XaMNjCqAzRibjnE_wBlkZ2axuMlPfqFLWy-3Tjp4nKScCHg1XF4aLsQJlo6oYbA/coyote_swatch.jpg?format=1000w");
+    border-radius: 10px;
+}
+
 .habit {
-    display: inline-flex;
+
     background-color: aquamarine;
-    width: 35%;
+    width: 300px;
     margin: 2rem;
     padding: 1rem;
     border: 5px solid;
@@ -50,8 +68,24 @@ form {
     border-color: black;
 }
 
+.habit:hover {
+    /* background-color: hotpink; */
+}
+
+
 .habit-name {
+    font-size: 2.5rem;
     text-emphasis: bold;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;    
+}
+
+.habit-name a {
+    text-emphasis: bold;
+    color: white;
+    -webkit-text-stroke-width: .75px;
+    -webkit-text-stroke-color: black;
 }
 
 .habit-detail-card {
@@ -59,6 +93,12 @@ form {
     background-color: aquamarine;
     border: 5px solid black;
     border-radius: 5px;
+    width: 70%;
 }
 
-.
+.habit-detail-name {
+    font-size: 3rem;
+    color: white;
+    -webkit-text-stroke-width: .75px;
+    -webkit-text-stroke-color: black;  
+}
